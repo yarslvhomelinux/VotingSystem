@@ -14,6 +14,7 @@
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <!--DB-->
         <postgresql.version>42.2.5</postgresql.version>
+        <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
     </properties>
 
     <dependencies>
@@ -21,6 +22,7 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+
         </dependency>
         <!-- Hibernate -->
         <!--- ORM -->
@@ -41,6 +43,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -36,4 +36,11 @@ public class Restaurant extends AbstractBaseEntity {
     public void setDailyMenuList(List<DailyMenu> dailyMenuList) {
         this.dailyMenuList = dailyMenuList;
     }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

@@ -3,10 +3,12 @@ package model;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "VOTE")
 public class Vote extends AbstractBaseEntity {
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "DATE")
+    @Column(name = "DATE_")
     protected Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -17,7 +19,8 @@ public class Vote extends AbstractBaseEntity {
     @JoinColumn(name = "RESTAURANT_ID")
     protected Restaurant restaurant;
 
-    public Vote() {}
+    public Vote() {
+    }
 
     public Vote(Integer id, Date date, User user, Restaurant restaurant) {
         super(id);

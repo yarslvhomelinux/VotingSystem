@@ -2,7 +2,9 @@ import model.DailyMenu;
 import model.MenuItem;
 import model.Restaurant;
 import org.hibernate.Session;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import service.HibernateSessionFactory;
+import service.RestaurantService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +13,21 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        testInitialData();
+        //testInitialData();
+        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+        ctx.load("classpath:spring/spring-db.xml"); //move from src.main.java to src.main.resources
+        ctx.refresh();
+
+        RestaurantService service = ctx.getBean(RestaurantService.class);
+        List<Restaurant> contacts = service.getAll();
+        printAll(contacts);
+    }
+
+    private static void printAll(List<Restaurant> restaurants) {
+        System.out.println("printAll: ");
+        for (Restaurant restaurant : restaurants) {
+            System.out.println(restaurant.toString());
+        }
     }
 
     public static void testInitialData() {
