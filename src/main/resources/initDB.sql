@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS DAILY_MENU;
+DROP TABLE IF EXISTS MENU_ITEM;
+DROP TABLE IF EXISTS RESTAURANT;
+DROP TABLE IF EXISTS USERS;
+DROP TABLE IF EXISTS VOTE;
+
+CREATE SEQUENCE IF NOT EXISTS global_seq START 100000;
+
+CREATE TABLE RESTAURANT
+(
+  id    INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  name_ VARCHAR
+);
+
+CREATE TABLE USERS
+(
+  id    INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  name_ VARCHAR,
+  role  VARCHAR
+);
+
+CREATE TABLE DAILY_MENU
+(
+  id            INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  date_         TIMESTAMP           DEFAULT now(),
+  restaurant_id INTEGER,
+
+  FOREIGN KEY (restaurant_id) REFERENCES RESTAURANT (id) ON DELETE CASCADE
+);
+
+CREATE TABLE MENU_ITEM
+(
+  id            INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  dishName      VARCHAR,
+  price         INTEGER,
+  daily_menu_id INTEGER,
+
+  FOREIGN KEY (daily_menu_id) REFERENCES DAILY_MENU (id) ON DELETE CASCADE
+);
+
+CREATE TABLE VOTE
+(
+  id            INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  date_         VARCHAR,
+  restaurant_id INTEGER,
+  user_id       INTEGER,
+
+  FOREIGN KEY (restaurant_id) REFERENCES RESTAURANT (id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES USERS (id) ON DELETE CASCADE
+);
