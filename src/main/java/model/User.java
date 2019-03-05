@@ -8,6 +8,9 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 public class User extends AbstractBaseEntity {
 
+    public static final String ADMIN = "admin";
+    public static final String USER = "user";
+
     @Column(name = "NAME_")
     protected String name;
 

@@ -10,13 +10,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface MenuItemCrudRepository extends JpaRepository<MenuItem, Integer> {
 
-    MenuItem save(MenuItem menuItem);
-
-    List<MenuItem> findAll();
-
     List<MenuItem> findByDishName(String dishName);
 
     List<MenuItem> findByDailyMenu(DailyMenu dailyMenu);
-
-    void delete(MenuItem menuItem);
 }

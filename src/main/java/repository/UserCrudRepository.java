@@ -9,11 +9,5 @@ import java.util.List;
 @Transactional(readOnly = true)
 public interface UserCrudRepository extends JpaRepository<User, Integer> {
 
-    User save(User restaurant);
-
-    List<User> findAll();
-
     List<User> findByName(String name);
-
-    void delete(User user);
 }
