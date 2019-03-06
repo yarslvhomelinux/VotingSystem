@@ -18,7 +18,7 @@ public interface RestaurantService {
 
     List<DailyMenu> getTodayMenuForAllRestaurant();
 
-    DailyMenu getTodayMenuForSelectedRestaurant(Restaurant restaurant);
+    DailyMenu getTodayMenuForSelectedRestaurant(Integer restaurantId);
 
     void createDailyMenu(DailyMenu dailyMenu);
 

@@ -15,7 +15,7 @@ public class DailyMenu extends AbstractBaseEntity {
     @OneToMany(mappedBy = "dailyMenu", fetch = FetchType.EAGER)
     protected List<MenuItem> menuItems;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "RESTAURANT_ID")
     protected Restaurant restaurant;
 
