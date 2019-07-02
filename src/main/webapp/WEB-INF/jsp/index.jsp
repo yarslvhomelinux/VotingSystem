@@ -1,1 +1,7 @@
-<h1>Hello world!</h1>
+<html>
+    <jsp:include page="header.jsp"/>
+    <title>Voting system</title>
+<body>
+
+</body>
+</html>
