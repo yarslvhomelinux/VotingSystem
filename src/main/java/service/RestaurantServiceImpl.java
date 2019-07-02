@@ -27,6 +27,11 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Autowired
     private MenuItemCrudRepository menuItemCrudRepository;
 
+    @Override
+    public void saveRestaurant(Restaurant restaurant) {
+        restaurantRepository.updateRestaurant(restaurant.getName(),  restaurant.getId());
+    }
+
     public void createRestaurant(Restaurant restaurant) {
         restaurantRepository.saveAndFlush(restaurant);
     }
@@ -39,6 +44,16 @@ public class RestaurantServiceImpl implements RestaurantService {
         log.trace("Restaurant service -- get all");
 
         return restaurantRepository.findAll();
+    }
+
+    @Override
+    public Restaurant getRestaurantById(Integer integer) {
+        return restaurantRepository.findFirstById(integer);
+    }
+
+    @Override
+    public List<Restaurant> getRestaurantByName(String name) {
+        return restaurantRepository.findByName(name);
     }
 
     public List<DailyMenu> getTodayMenuForAllRestaurant() {

@@ -25,17 +25,18 @@
     </tr>
     </thead>
     <tbody>
-        <c:forEach var="restaurant" items="${restaraunts}">
+        <c:forEach var="restaurant" items="${restaurants}">
             <tr scope="row">
                 <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
-                <td><a href="editemp/${emp.id}">Edit</a></td>
-                <td><a href="deleteemp/${emp.id}">Delete</a></td>
+                <td><a href="editRestaurant/${restaurant.id}">Edit</a></td>
+                <td><a href="deleteRestaurant/${restaurant.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </tbody>
 </table>
 <br/>
-<a class="text-center" href="empform">Add New Employee</a>
+<div class="text-center"><a class="btn btn-dark" href="${pageContext.request.contextPath}/createRestaurant" role="button">Add new restaurant</a></div>
+
 </body>
 </html>

@@ -1,12 +1,13 @@
 package controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
+import model.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import service.RestaurantService;
 
 @Controller
@@ -22,8 +23,33 @@ public class RootController {
 
     @RequestMapping(value = "/restaurants")
     public String showRestaurants(HttpServletRequest request, Model model) {
-        model.addAttribute("restaraunts", restaurantService.getAll());
+        model.addAttribute("restaurants", restaurantService.getAll());
         return "restaurantList";
+    }
+
+    @RequestMapping(value = "/createRestaurant")
+    public String createRestaurant(Model model) {
+        model.addAttribute("restaurant", new Restaurant());
+        return "restaurantForm";
+    }
+
+    @RequestMapping(value="/saveRestaurant",method = RequestMethod.POST)
+    public String saveRestaurant(@ModelAttribute("restaurant") Restaurant restaurant) {
+//        if (restaurant.getId() == null) {
+//            restaurantService.createRestaurant(restaurant);
+//        } else {
+            restaurantService.saveRestaurant(restaurant);
+      //  }
+
+        return "redirect:/restaurants";
+    }
+
+    @RequestMapping(value="/editRestaurant/{id}")
+    public String editRestaurant(@PathVariable int id, Model model) {
+        if (restaurantService.getRestaurantById(id) != null)
+            model.addAttribute("restaurant", restaurantService.getRestaurantById(id));
+
+        return "restaurantForm";
     }
 
     @RequestMapping(value = "/users")

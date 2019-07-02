@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class AbstractBaseEntity {
+
     public static final int START_SEQ = 100000;
 
     @Id
@@ -12,6 +13,7 @@ public abstract class AbstractBaseEntity {
     protected Integer id;
 
     public AbstractBaseEntity() {
+
     }
 
     public AbstractBaseEntity(Integer id) {

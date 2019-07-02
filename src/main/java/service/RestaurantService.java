@@ -10,11 +10,17 @@ import java.util.List;
 @Service
 public interface RestaurantService {
 
+    void saveRestaurant(Restaurant restaurant);
+
     void createRestaurant(Restaurant restaurant);
 
     void removeRestaurant(Restaurant restaurant);
 
     List<Restaurant> getAll();
+
+    Restaurant getRestaurantById(Integer integer);
+
+    List<Restaurant> getRestaurantByName(String name);
 
     List<DailyMenu> getTodayMenuForAllRestaurant();
 
