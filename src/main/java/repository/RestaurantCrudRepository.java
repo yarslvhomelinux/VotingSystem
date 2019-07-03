@@ -16,7 +16,8 @@ public interface RestaurantCrudRepository extends JpaRepository<Restaurant, Inte
 
     Restaurant findFirstById(Integer id);
 
-    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Modifying
     @Query("update Restaurant u set u.name = :name where u.id = :userId")
     void updateRestaurant(@Param("name") String name, @Param("userId") Integer userId);
 }

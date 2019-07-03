@@ -33,6 +33,14 @@ public class RootController {
         return "restaurantForm";
     }
 
+    @RequestMapping(value="/editRestaurant/{id}", method = RequestMethod.GET)
+    public String editRestaurant(@PathVariable int id, Model model) {
+        if (restaurantService.getRestaurantById(id) != null)
+            model.addAttribute("restaurant", restaurantService.getRestaurantById(id));
+
+        return "restaurantEdit";
+    }
+
     @RequestMapping(value="/saveRestaurant",method = RequestMethod.POST)
     public String saveRestaurant(@ModelAttribute("restaurant") Restaurant restaurant) {
 //        if (restaurant.getId() == null) {
@@ -44,13 +52,7 @@ public class RootController {
         return "redirect:/restaurants";
     }
 
-    @RequestMapping(value="/editRestaurant/{id}")
-    public String editRestaurant(@PathVariable int id, Model model) {
-        if (restaurantService.getRestaurantById(id) != null)
-            model.addAttribute("restaurant", restaurantService.getRestaurantById(id));
 
-        return "restaurantForm";
-    }
 
     @RequestMapping(value = "/users")
     public String showUsers(HttpServletRequest request, Model model) {

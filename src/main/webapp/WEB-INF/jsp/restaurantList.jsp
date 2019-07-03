@@ -29,8 +29,8 @@
             <tr scope="row">
                 <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
-                <td><a href="editRestaurant/${restaurant.id}">Edit</a></td>
-                <td><a href="deleteRestaurant/${restaurant.id}">Delete</a></td>
+                <td><a href="${pageContext.request.contextPath}/editRestaurant/${restaurant.id}">Edit</a></td>
+                <td><a href="${pageContext.request.contextPath}/deleteRestaurant/${restaurant.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </tbody>
