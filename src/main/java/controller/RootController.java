@@ -38,7 +38,7 @@ public class RootController {
         if (restaurantService.getRestaurantById(id) != null)
             model.addAttribute("restaurant", restaurantService.getRestaurantById(id));
 
-        return "restaurantEdit";
+        return "restaurantForm";
     }
 
     @RequestMapping(value="/saveRestaurant",method = RequestMethod.POST)

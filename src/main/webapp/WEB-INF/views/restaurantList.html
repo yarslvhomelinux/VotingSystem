@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/header.html :: headLinks">
+    <title>Restaurants List</title>
+</head>
+<body>
+<div th:replace="/header.html :: header"/>
+<h1 class="text-center">Restaurants List</h1>
+<table class="table table-align">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="restaurant: ${restaurants}" scope="row">
+        <td th:text="${restaurant.id}"/>
+        <td th:text="${restaurant.name}"/>
+        <td><a th:href="@{'/editRestaurant/' + ${restaurant.id}}">Edit</a></td>
+        <td><a href="/deleteRestaurant/${restaurant.id}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<div class="text-center"><a class="btn btn-dark" href="/createRestaurant" th:href="@{/createRestaurant}" role="button">Add new restaurant</a></div>
+
+</body>
+</html>

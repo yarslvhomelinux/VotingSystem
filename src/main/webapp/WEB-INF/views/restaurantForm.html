@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/header.html :: headLinks">
+    <title>Create restaurant</title>
+</head>
+
+<body>
+<div th:replace="/header.html :: header"/>
+<h1 class="text-center">Create New Restaurant</h1>
+<div class="w-50 m-auto">
+    <form action="#" th:action="@{/saveRestaurant}" th:object="${restaurant}" method="post">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default-id">ID</span>
+            </div>
+            <input th:field="*{id}" type="text" disabled="true" cssClass="form-control" aria-label="Name"
+                   aria-describedby="inputGroup-sizing-default"/>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default-name">Name</span>
+            </div>
+            <input th:field="*{name}" type="text" cssClass="form-control" aria-label="Name"
+                   aria-describedby="inputGroup-sizing-default"/>
+        </div>
+        <div class="text-center"><input type="submit" class="btn btn-dark" value="Save"/></div>
+    </form>
+</div>
+
+</body>
+</html>
