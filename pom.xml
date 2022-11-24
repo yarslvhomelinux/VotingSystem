@@ -24,7 +24,7 @@
     <properties>
         <spring.version>5.1.2.RELEASE</spring.version>
         <!-- Hibernate -->
-        <hibernate.version>5.3.7.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <!--DB-->
         <postgresql.version>42.2.5</postgresql.version>
